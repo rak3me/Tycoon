@@ -11,14 +11,12 @@ public class ItemWindow : EditorWindow {
     GameObject itemModel;
     int itemCost = 1;
 
-
-    bool groupEnabled;
-    bool myBool = true;
-    float myFloat = 1.23f;
-
     [MenuItem("GameObject/Create Item")]
     public static void Init () {
-        EditorWindow.GetWindow<ItemWindow>("Create Item");
+        ItemWindow window = EditorWindow.GetWindow<ItemWindow>("Create Item");
+        //Vector2 size = window.position.size;
+        window.minSize = new Vector2(300, 200);
+        window.maxSize = new Vector2(300, 200);
     }
 
 
