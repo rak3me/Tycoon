@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newCamera: {fileID: 714714003}
-  speed: 1
-  smoothTime: 3
+  newCamera2: {fileID: 1153350743}
+  smoothTime: 0.8
 --- !u!1 &585117864
 GameObject:
   m_ObjectHideFlags: 0

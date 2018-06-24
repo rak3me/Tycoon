@@ -21,22 +21,24 @@ public class CameraController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !roomEntered)
+        if (other.CompareTag("Player"))
         {
-            MoveCamera(newCamera);
-        }
-        else if (other.CompareTag("Player") && roomEntered) 
-        {
-            MoveCamera(newCamera2);
+            triggerEntered = true;
         }
     }
 
-    IEnumerator MoveCamera(GameObject newSpot)
+    private void Update()
+    {
+        if (triggerEntered)
+        {
+            MoveCamera(newCamera);
+        }
+    }
+
+    void MoveCamera(GameObject newSpot)
     {
         cam.transform.position =
                 Vector3.SmoothDamp(cam.transform.position, newSpot.transform.position, ref velocity, smoothTime);
-        yield return new WaitForSeconds(4f);
-        //roomEntered = !roomEntered;
     }
 
     // Update is called once per frame
