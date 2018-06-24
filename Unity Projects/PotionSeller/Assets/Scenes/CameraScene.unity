@@ -323,7 +323,6 @@ GameObject:
   m_Component:
   - component: {fileID: 409280556}
   - component: {fileID: 409280557}
-  - component: {fileID: 409280558}
   m_Layer: 0
   m_Name: Left Room Trigger
   m_TagString: Untagged
@@ -356,20 +355,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &409280558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409280555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd62bd8aa45c84488e6343f79830840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newCamera: {fileID: 714714003}
-  newCamera2: {fileID: 1153350743}
-  smoothTime: 0.8
 --- !u!1 &585117864
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +510,7 @@ GameObject:
   - component: {fileID: 949803521}
   - component: {fileID: 949803520}
   - component: {fileID: 949803519}
+  - component: {fileID: 949803523}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -595,6 +581,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &949803523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949803518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd62bd8aa45c84488e6343f79830840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newCamera: {fileID: 0}
+  newCamera2: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  smoothTime: 1
 --- !u!1 &1067464652
 GameObject:
   m_ObjectHideFlags: 0
