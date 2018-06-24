@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour {
     void Start () {
         cam = Camera.main;
         player = GameObject.Find("Player").transform;
-        offset = cam.transform.position - player.transform.position;
+        offset = cam.transform.position;
     }
 
     private void FixedUpdate()
