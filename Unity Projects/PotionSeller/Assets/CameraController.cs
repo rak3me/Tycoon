@@ -6,10 +6,12 @@ public class CameraController : MonoBehaviour {
 
     public GameObject newCamera;
     public int speed;
+    public float smoothTime;
 
     Camera cam;
 
     private bool triggerEntered;
+    private Vector3 velocity = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +31,7 @@ public class CameraController : MonoBehaviour {
 		if (triggerEntered)
         {
             cam.transform.position = 
-                Vector3.Lerp(cam.transform.position, newCamera.transform.position, speed * Time.deltaTime);
+                Vector3.SmoothDamp(cam.transform.position, newCamera.transform.position, ref velocity, smoothTime);
         }
 	}
 }
