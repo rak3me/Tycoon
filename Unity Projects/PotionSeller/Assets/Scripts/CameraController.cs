@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour {
         offset = cam.transform.position;
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate ()
     {
         if (Physics.Raycast(player.position, Vector3.down, out hit, 100, groundLayer))
         {
