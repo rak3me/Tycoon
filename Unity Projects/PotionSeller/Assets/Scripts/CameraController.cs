@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public GameObject newCamera;
-    public GameObject newCamera2;
     public LayerMask groundLayer;
     public float smoothTime;
 
