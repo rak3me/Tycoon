@@ -14,13 +14,23 @@ public class Item
     
     public Item(){}
 
-    public Item(string name, int id, string desc, Sprite icon, GameObject model)                 //function to create a instance of the Item
+    public Item(string name, int id, string desc, Sprite icon, GameObject model, int cost)                 //function to create a instance of the Item
     {
         itemName = name;
         itemID = id;
         itemDesc = desc;
         itemIcon = icon;
         itemModel = model;
+        itemCost = cost;
+    }
+
+    public void SetProperties (string name, int id, string desc, Sprite icon, GameObject model, int cost) {
+        itemName = name;
+        itemID = id;
+        itemDesc = desc;
+        itemIcon = icon;
+        itemModel = model;
+        itemCost = cost;
     }
 
     public Item getCopy()

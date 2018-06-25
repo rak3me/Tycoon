@@ -34,14 +34,13 @@ public class ItemWindow : EditorWindow {
     }
 
     private void CreateItem () {
-        //new Item(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel)
-        GameObject itemGO = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        //Item item = itemGO.AddComponent<Item>();
-        //item = new Item(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel);
-
-        Object temp = PrefabUtility.CreateEmptyPrefab("Assets/Resources/Prefabs/Items/" + itemName + ".prefab");
-        PrefabUtility.ReplacePrefab(itemGO, temp);
-        DestroyImmediate(itemGO);
-        //AssetDatabase.CreateAsset(new Object(), "Assets/Resources/Prefabs/Items/" + itemName + ".asset");
+        ItemList itemList;
+        if ((itemList = ItemList.GetAsset()) == null) {
+            Debug.Log("IT NOT FOUND");
+            AssetDatabase.CreateAsset(itemList = (ItemList)ScriptableObject.CreateInstance<ItemList>(), ItemList.path);
+            AssetDatabase.SaveAssets();
+        }
+        itemList.AddItem(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel, itemCost);
+        EditorWindow.GetWindow<ItemWindow>("Create Item").Close();
     }
 }
