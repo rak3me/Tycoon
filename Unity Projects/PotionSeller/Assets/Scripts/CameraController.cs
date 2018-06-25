@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public GameObject newCamera;
-    public GameObject newCamera2;
     public LayerMask groundLayer;
     public float smoothTime;
 
@@ -25,7 +23,7 @@ public class CameraController : MonoBehaviour {
         offset = cam.transform.position;
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate ()
     {
         if (Physics.Raycast(player.position, Vector3.down, out hit, 100, groundLayer))
         {
