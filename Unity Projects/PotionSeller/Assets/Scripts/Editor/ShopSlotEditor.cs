@@ -19,7 +19,12 @@ public class ShopSlotEditor : Editor {
         GUI.enabled = true;
 
         shopSlot = (ShopSlot)target;
+
         UpdateItemListNames();
+
+        if (itemListNames.Count == 0) {
+            return;
+        }
 
         currentItem = ItemList.GetAsset().items[dropdownIndex = EditorGUILayout.Popup("Item", dropdownIndex, itemListNames.ToArray())];
 

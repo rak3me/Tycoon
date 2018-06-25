@@ -36,11 +36,11 @@ public class ItemWindow : EditorWindow {
     private void CreateItem () {
         ItemList itemList;
         if ((itemList = ItemList.GetAsset()) == null) {
-            Debug.Log("IT NOT FOUND");
             AssetDatabase.CreateAsset(itemList = (ItemList)ScriptableObject.CreateInstance<ItemList>(), ItemList.path);
             AssetDatabase.SaveAssets();
         }
         itemList.AddItem(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel, itemCost);
+        AssetDatabase.SaveAssets();
         EditorWindow.GetWindow<ItemWindow>("Create Item").Close();
     }
 }
