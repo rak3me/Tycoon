@@ -9,12 +9,12 @@ public class ItemList : ScriptableObject {
     public List<Item> items;
 
     public void AddItem (Item item) {
-        AddItem(item.itemName, item.itemID, item.itemDesc, item.itemIcon, item.itemModel, item.itemCost);
+        AddItem(item.itemName, item.itemDesc, item.itemIcon, item.itemModel, item.itemCost);
     }
 
-    public void AddItem (string name, int id, string desc, Sprite icon, GameObject model, int cost) {
+    public void AddItem (string name, string desc, Sprite icon, GameObject model, int cost) {
         //Item item = ScriptableObject.CreateInstance<Item>();
-        items.Add(new Item(name, id, desc, icon, model, cost));
+        items.Add(new Item(name, GenerateID(), desc, icon, model, cost));
     }
 
     public Item FindItemByID (int id) {
@@ -37,5 +37,21 @@ public class ItemList : ScriptableObject {
 
     public static ItemList GetAsset () {
         return (ItemList)(AssetDatabase.LoadAssetAtPath(path, typeof(ItemList)));
+    }
+
+    public int GenerateID () {
+        int id;
+        bool valid = true;
+        do {
+            id = Random.Range(0, int.MaxValue);
+
+            foreach (var item in items) {
+                if (item.itemID == id) {
+                    valid = false;
+                }
+            }
+        } while (!valid);
+
+        return id;
     }
 }
