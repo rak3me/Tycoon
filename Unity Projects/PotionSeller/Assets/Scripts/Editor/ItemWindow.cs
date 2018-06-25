@@ -11,14 +11,12 @@ public class ItemWindow : EditorWindow {
     GameObject itemModel;
     int itemCost = 1;
 
-
-    bool groupEnabled;
-    bool myBool = true;
-    float myFloat = 1.23f;
-
     [MenuItem("GameObject/Create Item")]
     public static void Init () {
-        EditorWindow.GetWindow<ItemWindow>("Create Item");
+        ItemWindow window = EditorWindow.GetWindow<ItemWindow>("Create Item");
+        //Vector2 size = window.position.size;
+        window.minSize = new Vector2(300, 200);
+        window.maxSize = new Vector2(300, 200);
     }
 
 
@@ -36,14 +34,13 @@ public class ItemWindow : EditorWindow {
     }
 
     private void CreateItem () {
-        //new Item(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel)
-        GameObject itemGO = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        //Item item = itemGO.AddComponent<Item>();
-        //item = new Item(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel);
-
-        Object temp = PrefabUtility.CreateEmptyPrefab("Assets/Resources/Prefabs/Items/" + itemName + ".prefab");
-        PrefabUtility.ReplacePrefab(itemGO, temp);
-        DestroyImmediate(itemGO);
-        //AssetDatabase.CreateAsset(new Object(), "Assets/Resources/Prefabs/Items/" + itemName + ".asset");
+        ItemList itemList;
+        if ((itemList = ItemList.GetAsset()) == null) {
+            AssetDatabase.CreateAsset(itemList = (ItemList)ScriptableObject.CreateInstance<ItemList>(), ItemList.path);
+            AssetDatabase.SaveAssets();
+        }
+        itemList.AddItem(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel, itemCost);
+        AssetDatabase.SaveAssets();
+        EditorWindow.GetWindow<ItemWindow>("Create Item").Close();
     }
 }
