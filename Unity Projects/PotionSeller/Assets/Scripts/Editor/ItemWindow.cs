@@ -39,7 +39,7 @@ public class ItemWindow : EditorWindow {
             AssetDatabase.CreateAsset(itemList = (ItemList)ScriptableObject.CreateInstance<ItemList>(), ItemList.path);
             AssetDatabase.SaveAssets();
         }
-        itemList.AddItem(itemName, Random.Range(0, int.MaxValue), itemDescription, itemIcon, itemModel, itemCost);
+        itemList.AddItem(itemName, itemDescription, itemIcon, itemModel, itemCost);
         AssetDatabase.SaveAssets();
         EditorWindow.GetWindow<ItemWindow>("Create Item").Close();
     }
