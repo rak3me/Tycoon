@@ -32,7 +32,9 @@ public class PlayerMotor : MonoBehaviour {
 
     public void FollowTarget (Interactable newTarget)
     {
-        agent.stoppingDistance = newTarget.radius * .2f;
+
+        // can multiply a float to radius to manipulate stopping distance
+        agent.stoppingDistance = newTarget.radius;
         agent.updateRotation = false;
 
         target = newTarget.transform;
