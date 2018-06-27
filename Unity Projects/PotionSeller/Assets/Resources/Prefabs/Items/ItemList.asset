@@ -13,25 +13,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - itemName: l
-    itemID: 0
+    itemID: 420
     itemDesc: 
     itemIcon: {fileID: 21300000, guid: 201807d6092704a6b90fbf5918f85ddd, type: 3}
     itemModel: {fileID: 0}
     itemCost: 0
   - itemName: p
-    itemID: 0
+    itemID: 69
     itemDesc: 
     itemIcon: {fileID: 21300000, guid: ec1323c522ab64a14bd9b52a4fae125c, type: 3}
     itemModel: {fileID: 0}
     itemCost: 0
   - itemName: o
-    itemID: 0
+    itemID: 525600
     itemDesc: 
     itemIcon: {fileID: 21300000, guid: bae739cb0205e4aeaa9c067911dadf9e, type: 3}
     itemModel: {fileID: 0}
     itemCost: 0
   - itemName: v
-    itemID: 0
+    itemID: 1
     itemDesc: 
     itemIcon: {fileID: 21300000, guid: 84b1201d1e841498d9274614552a9d8e, type: 3}
     itemModel: {fileID: 0}

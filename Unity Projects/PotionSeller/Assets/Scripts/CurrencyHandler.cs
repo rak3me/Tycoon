@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class CurrencyHandler : MonoBehaviour {
 
+    public static CurrencyHandler instance;
+    private static int instanceCount = 0;
+
     [SerializeField] private int startingGold = 200; //Gold on new game
     [SerializeField] private int debtLimit = 1000; //The point at which the players loses
     [SerializeField] private float debtInterestRate = 1.5f; //How much the unpaid debt increases every day
 
-    private int gold;
-    private int debt;
-    private bool overdrawn = false;
+    [SerializeField] private int gold;
+    [SerializeField] private int debt;
+    [SerializeField] private bool overdrawn = false;
 
 	// Use this for initialization
 	void Awake () {
-        
+        //Singleton
+        if (instanceCount++ == 0) {
+            instance = this;
+        } else {
+            Destroy(this);
+        }
+
+        gold = startingGold;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void AttemptPurchase (Item item) {
+        int itemCost = item.itemCost;
+        if (gold >= itemCost) {
+            gold -= itemCost;
+        } else {
+            debt += (itemCost - gold);
+            gold = 0;
+        }
+        PurchaseItem(item);
+    }
+
+    void PurchaseItem (Item item) {
+        print("Purchased " + item.itemName + " for " + item.itemCost + " gold.");
+
+    }
 
     //To be called when a new game is made
     void NewGame () {

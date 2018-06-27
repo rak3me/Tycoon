@@ -14,27 +14,36 @@ public class ShopSlot : MonoBehaviour {
         
     }
 
+    void ToggleBuyButton (bool enabled) {
+        GameObject buyButton = transform.GetChild(1).gameObject;
+        buyButton.SetActive(enabled);
+    }
+
     public void UpdateItem (Item newItem) {
-        if (newItem.itemID == item.itemID) {
+        if (newItem == null) {
+            EmptyItemSlot();
+            ToggleBuyButton(false);
             return;
         }
 
-        item = newItem;
-
         EmptyItemSlot();
+        ToggleBuyButton(true);
         PopulateItemSlot(newItem);
     }
 
     public void EmptyItemSlot () {
-        if (transform.childCount > 0) {
-            DestroyImmediate(transform.GetChild(0).gameObject);
+        Transform itemHolder = transform.GetChild(0);
+        item = null;
+        if (itemHolder.childCount > 0) {
+            DestroyImmediate(itemHolder.GetChild(0).gameObject);
         }
     }
 
     public void PopulateItemSlot (Item newItem) {
+        item = newItem;
         GameObject itemGO = new GameObject();
         itemGO.name = "Item - " + newItem.itemName;
-        itemGO.transform.SetParent(transform);
+        itemGO.transform.SetParent(transform.GetChild(0));
         itemGO.transform.localPosition = Vector3.zero;
 
         Image image = itemGO.AddComponent<Image>();
@@ -44,5 +53,7 @@ public class ShopSlot : MonoBehaviour {
         RectTransform rectTransform = itemGO.GetComponent<RectTransform>();
         rectTransform.sizeDelta = Vector2.one * 50;
     }
+
+    public Item GetItem () { return item; }
 
 }
