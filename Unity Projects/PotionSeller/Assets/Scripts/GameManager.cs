@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    CurrencyHandler currencyHandler;
+//    CurrencyHandler currencyHandler;
 
     [Header("Level Info")]
     [SerializeField] private int level = 1;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     private void Awake () {
-        currencyHandler = FindObjectOfType<CurrencyHandler>();
+        //currencyHandler = FindObjectOfType<CurrencyHandler>();
 
         levelInProgress = false;
         levelSecondsElapsed = 0f;

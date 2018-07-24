@@ -54,4 +54,14 @@ public class ItemList : ScriptableObject {
 
         return id;
     }
+
+    public static ItemList GetItemList () {
+        ItemList itemList;
+        if ((itemList = GetAsset()) == null) {
+            AssetDatabase.CreateAsset(itemList = ScriptableObject.CreateInstance<ItemList>(), path);
+            AssetDatabase.SaveAssets();
+        }
+
+        return itemList;
+    }
 }

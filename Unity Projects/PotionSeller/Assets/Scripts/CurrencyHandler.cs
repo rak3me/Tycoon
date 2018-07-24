@@ -13,7 +13,7 @@ public class CurrencyHandler : MonoBehaviour {
 
     [SerializeField] private int gold;
     [SerializeField] private int debt;
-    [SerializeField] private bool overdrawn = false;
+//    [SerializeField] private bool overdrawn = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -47,7 +47,7 @@ public class CurrencyHandler : MonoBehaviour {
     void NewGame () {
         gold = startingGold;
         debt = 0;
-        overdrawn = false;
+//        overdrawn = false;
     }
 
     //Called at the end of every day. Any unpaid debt has an interest
@@ -59,7 +59,7 @@ public class CurrencyHandler : MonoBehaviour {
 
     //Overdrawing on debt should end the game
     void OnOverdraw () {
-        overdrawn = true;
+//        overdrawn = true;
     }
 
     void CheckDebt () {

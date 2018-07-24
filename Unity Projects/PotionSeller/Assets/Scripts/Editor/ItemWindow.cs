@@ -34,11 +34,7 @@ public class ItemWindow : EditorWindow {
     }
 
     private void CreateItem () {
-        ItemList itemList;
-        if ((itemList = ItemList.GetAsset()) == null) {
-            AssetDatabase.CreateAsset(itemList = (ItemList)ScriptableObject.CreateInstance<ItemList>(), ItemList.path);
-            AssetDatabase.SaveAssets();
-        }
+        ItemList itemList = ItemList.GetItemList();
         itemList.AddItem(itemName, itemDescription, itemIcon, itemModel, itemCost);
         AssetDatabase.SaveAssets();
         EditorWindow.GetWindow<ItemWindow>("Create Item").Close();
